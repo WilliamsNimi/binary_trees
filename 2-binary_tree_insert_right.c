@@ -2,13 +2,13 @@
 #include "binary_trees.h"
 #include <stdlib.h>
 /**
- * binary_tree_node - A node creator
- * Desc: This function creates a binary tree node
- * @parent: The parent of the tree
+ * binary_tree_insert_right - A right node adder
+ * Desc: This function adds node to the right
+ * @parent: The parent of the node
  * @value: The value of the node
  * Return: Returns pointer to the new node of NUll
  **/
-binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
+binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
 {
 	binary_tree_t *new_node;
 
@@ -19,15 +19,15 @@ binary_tree_t *binary_tree_node(binary_tree_t *parent, int value)
 	new_node->right = NULL;
 	if (parent == NULL)
 	{
-		parent = new_node;
-		return (parent);
+		return (NULL);
 	}
-	if (parent->left == NULL)
+	if (parent->right == NULL)
 	{
-		parent->left = new_node;
+		parent->right = new_node;
 	}
-	else if (parent->right == NULL)
+	else if (parent->right != NULL)
 	{
+		new_node->right = parent->right->right;
 		parent->right = new_node;
 	}
 	return (new_node);
